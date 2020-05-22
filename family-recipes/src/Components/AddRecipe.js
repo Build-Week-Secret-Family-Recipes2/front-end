@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-// import { addRecipe } from '../ReduxStuff/Actions';
+import { addRecipe } from '../utils/Actions';
 import { Link } from "react-router-dom";
 import RecipeCard from './RecipeCard';
 import styled from "styled-components"
@@ -18,29 +18,51 @@ import styled from "styled-components"
 
     const handleSubmit = event => {
         event.preventDefault();
-        // props.addRecipe(recipe);
-        props.history.push(`/chefdashboard/${userId}`);
+        props.addRecipe(recipe);
+        // props.history.push(`/PROFILE PAGE/${userId}`);
+        console.log("the recipe pushed");
     }
    
+        const [ingredients, setIngredients] = useState([{ value: null }]);
         const [fields, setFields] = useState([{ value: null }]);
 
-        function handleBtn(i, event) {
-          const values = [...fields];
+
+        function handleBtnIng(i, event) {
+          const values = [...ingredients];
           values[i].value = event.target.value;
-          setFields(values);
+          setIngredients(values);
         }
       
-        function handleAdd() {
-          const values = [...fields];
+        
+        function handleAddIng() {
+          const values = [...ingredients];
           values.push({ value: null });
-          setFields(values);
+          setIngredients(values);
         }
       
-        function handleRemove(i) {
-          const values = [...fields];
+        function handleRemoveIng(i) {
+          const values = [...ingredients];
           values.splice(i, 1);
-          setFields(values);
+          setIngredients(values);
         }
+
+        function handleBtnDir(i, event) {
+            const values = [...fields];
+            values[i].value = event.target.value;
+            setFields(values);
+          }
+
+        function handleAddDir() {
+            const values = [...fields];
+            values.push({ value: null });
+            setFields(values);
+          }
+        
+          function handleRemoveDir(i) {
+            const values = [...fields];
+            values.splice(i, 1);
+            setFields(values);
+          }
         
 
     return (
@@ -111,50 +133,62 @@ import styled from "styled-components"
             </span>
 
             <div>
-                <p className="bottom-text">Ingredients: <span>  <button type="button" onClick = {() => handleAdd()}>+</button> </span> </p>
+                <p className="bottom-text">Ingredients <span>  <button type="button" onClick = {() => handleAddIng()}>+</button> </span> </p>
+                
+                {ingredients.map((Ingredients, idx) => {
+                    return (
+                    <div key={`${Ingredients}-${idx}`}>
+                        <input
+                        type="text"
+                        placeholder="Ingredients"
+                        value={Ingredients.value || ""}
+                        onChange={e => handleBtnIng(idx, e)}
+                        />
+                        <button type="button" onClick={() => handleRemoveIng(idx)}>
+                        X
+                        </button>
+                    </div>
+                    );
+                })}
+               
+            </div>
+
+            <div>
+                <p className="bottom-text">Directions <span>  <button type="button" onClick = {() => handleAddDir()}>+</button> </span> </p>
                 
                 {fields.map((field, idx) => {
                     return (
                     <div key={`${field}-${idx}`}>
                         <input
                         type="text"
-                        placeholder="Ingredients"
+                        placeholder="Step"
                         value={field.value || ""}
-                        onChange={e => handleBtn(idx, e)}
+                        onChange={e => handleBtnDir(idx, e)}
                         />
-                        <button type="button" onClick={() => handleRemove(idx)}>
+                        <button type="button" onClick={() => handleRemoveDir(idx)}>
                         X
                         </button>
                     </div>
                     );
                 })}
-
-                {/* <textarea
-                    className="ingredients"
-                    type="text"
-                    name="ingredients"
-                    placeholder="Ingredients:"
-                    rows="2"
-                    cols="30"
-                    value={recipe.ingredients}
-                    onChange={handleChanges}
-                ></textarea> */}
-                
+               
             </div>
+            <span>
+                <p> <span> 
+                    <textarea
+                        rows="10"
+                        cols="50"
+                        className="name"
+                        type="text"
+                        name="recipe_history"
+                        placeholder="Recipe history AKA the sob story..."
+                        value={recipe.recipe_history}
+                        onChange={handleChanges}
+                    />
+                    </span></p>
 
-            <div>
-                <p className="bottom-text">Add Instructions</p>
-                <textarea
-                    className="directions"
-                    type="text"
-                    name="instructions"
-                    placeholder="Directions:"
-                    rows="2"
-                    cols="30"
-                    value={recipe.instructions}
-                    onChange={handleChanges}
-                ></textarea>
-            </div>
+            </span>
+
             <button className="addButton" type="submit">Post Recipe</button>
         </form>
 
@@ -166,6 +200,6 @@ const mapStateToProps = state => {
     return state;
   };
   
-  export default connect(mapStateToProps, { })(CreateRecipe);
+  export default connect(mapStateToProps, {addRecipe })(CreateRecipe);
 
   //addRecipe
