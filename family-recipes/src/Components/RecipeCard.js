@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from "axios";
-import styled from 'styled-components';
+
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -17,59 +16,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 
-const CardWrapper = styled.div`
-    display: flex;
-    margin: auto;
-    padding: 0;
-    justify-content: evenly;
-    flex-flow: row wrap;
-   
-`;
 
-const Header = styled.h1`
-color: #FD8664;
-font-size: 3.6rem;
-text-align: center;
-`
-
-function RecipesPage() {
-
-    const [recipes, SetRecipes] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get(`https://backend-chef.herokuapp.com/api/recipes/`)
-            .then(res => {
-                SetRecipes(res.data);
-                console.log(res.data);
-            })
-            .catch(err => {
-                console.log('this data was not returned', err);
-            })
-    }, []);
-
-    return (
-      
-        <section >
-            <Header>Recipes</Header>      
-            {/* add search bar here */}
-            <CardWrapper className="Recipe-Day" >                
-                    {recipes.map(recipes => (
-                        <RecipeCard 
-                        chef_name={recipes.chef_name}
-                        recipe_photo={recipes.recipe_photo}
-                        recipe_name={recipes.recipe_name} 
-                        ingredients={recipes.ingredients}
-                        cook_time={recipes.cook_time}
-                        prep_time={recipes.prep_time}
-                        instructions={recipes.instructions}
-                        servings={recipes.servings}
-                        />
-                    ))}                
-            </CardWrapper>                  
-        </section>
-    );
-}
 
 const useStyles = makeStyles(theme => ({
   card: {

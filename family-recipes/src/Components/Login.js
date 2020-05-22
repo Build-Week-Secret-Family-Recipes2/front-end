@@ -52,14 +52,11 @@ export default function LogIn() {
   return (
 
     <Container component="main" maxWidth="xs">
-          <h1>Login Page</h1>
+          
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
         <Typography component="h1" variant="h5">
-          Login
+          Login Please
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -84,10 +81,13 @@ export default function LogIn() {
             id="password"
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+            <Grid container justify="flex-center">
+                <Grid item>
+                    <Link href="/SignUp" variant="body2">
+                        Need an account? Sign up
+                    </Link>
+                </Grid>
+            </Grid>
           <Button
             type="submit"
             fullWidth
@@ -97,18 +97,6 @@ export default function LogIn() {
           >
             Sign In
           </Button>
-          {/* <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid> */}
         </form>
       </div>
       <Box mt={8}>

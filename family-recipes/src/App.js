@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, Switch, Link } from "react-router-dom";
+import Login from "./Components/Login";
+import SignUp from "./Components/SignUp";
+import PrivateRoute from "./utils/PrivateRoute";
+import { Nav } from "reactstrap";
+import AddRecipe from './Components/AddRecipe';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Family Recipes</h1>
+      <> 
+        <Nav>
+          <Switch>
+            <Route path = "/Login" component = {Login} />
+            <Route path = "/SignUp" component = {SignUp} />
+            <Route path = "/AddRecipe" component = {AddRecipe} /> 
+          </Switch>
+        </Nav>
+      </>
+
     </div>
   );
 }
