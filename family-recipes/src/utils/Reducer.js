@@ -31,8 +31,8 @@ import {
           cook_time: "",
           servings: "",
           recipe_photo: "",
-          ingredients: "",
-          instructions: "",
+          ingredients: [],
+          instructions: [],
         }
       ],
       allRecipes: [

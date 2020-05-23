@@ -52,7 +52,6 @@ export default function SignUp() {
   return (
     
     <Container component="main" maxWidth="xs">
-      <h1>Sign up page</h1>
       <CssBaseline />
       <div className={classes.paper}>
 

@@ -4,7 +4,7 @@ import { addRecipe } from '../utils/Actions';
 import { Link } from "react-router-dom";
 import RecipeCard from './RecipeCard';
 import styled from "styled-components"
-import PrivateNav from "./NavBar";
+
 
 
     const CreateRecipe = props => {
@@ -14,9 +14,9 @@ import PrivateNav from "./NavBar";
     });
 
     const handleChanges = e => {
-        setRecipe({ ...recipe, [e.target.name]: e.target.value });
+        setRecipe({ ...recipe, [e.target.name]: e.target.value });        
     };
-
+ 
     const handleSubmit = event => {
         event.preventDefault();
         props.addRecipe(recipe);
@@ -68,7 +68,7 @@ import PrivateNav from "./NavBar";
 
     return (
         <> 
-        <PrivateNav />
+        <h2>Add Recipe</h2>
         <form className="PostForm" onSubmit={handleSubmit}>
             <span>
                 <p> <span> 
@@ -167,7 +167,7 @@ import PrivateNav from "./NavBar";
                                 <input
                                 size="42"
                                 type="text"
-                                placeholder="Step"
+                                placeholder="Instructions"
                                 value={field.value || ""}
                                 onChange={e => handleBtnDir(idx, e)}
                                 />
@@ -195,7 +195,7 @@ import PrivateNav from "./NavBar";
                     />
                     </span></p>
             </span>
-            <button className="addButton" type="submit">Post Recipe</button>
+            <button className="addButton" type="submit">Add Recipe</button>
             </form>
         </>
        

@@ -9,8 +9,7 @@ import AddRecipe from './AddRecipe';
 import Home from './Home';
 
 
-
-const NavBar = () => {
+const PrivateNav = () => {
     function signOut() {
       localStorage.removeItem("token");
       localStorage.removeItem("reload");
@@ -60,5 +59,34 @@ const NavBar = () => {
     }
 
   };
+
+
+
+    // return (
+
+    //     <nav>
+
+
+    //       <NavLink to ='/'> Home </NavLink>
+    //       <NavLink to ='/Login'>Login  </NavLink>
+    //       <NavLink to ='/SignUp'>Sign Up </NavLink>
+          
+    //       <NavLink className="privatelink" to="/Profile">Profile </NavLink>
+    //       <NavLink className="privatelink" to="/AddRecipe">Add Recipe </NavLink>
+    //       <NavLink className="privatelink" to="/login" onClick={() => {
+    //           signOut();
+    //         }} >Sign Out</NavLink>
+    //       <Switch>
+    //         <Route path = "/Login" component = {Login} />
+    //         <Route path = "/SignUp" component = {SignUp} />
+    //         <Route path = "/AddRecipe" component = {AddRecipe} /> 
+    //         <Route path = "/" component = {Home} /> 
+    //       </Switch>
+
+        
+    //     </nav>
+
+    // );
+  // };
   
-  export default NavBar;
+  export default PrivateNav;
