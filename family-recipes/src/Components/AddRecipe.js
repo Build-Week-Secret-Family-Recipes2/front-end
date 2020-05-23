@@ -4,6 +4,7 @@ import { addRecipe } from '../utils/Actions';
 import { Link } from "react-router-dom";
 import RecipeCard from './RecipeCard';
 import styled from "styled-components"
+import PrivateNav from "./NavBar";
 
 
     const CreateRecipe = props => {
@@ -66,11 +67,13 @@ import styled from "styled-components"
         
 
     return (
-
+        <> 
+        <PrivateNav />
         <form className="PostForm" onSubmit={handleSubmit}>
             <span>
                 <p> <span> 
                     <input
+                        size="50"
                         className="name"
                         type="text"
                         name="recipe_name"
@@ -84,6 +87,7 @@ import styled from "styled-components"
             <span>
                 <p><span>
                     <input
+                        size="50"
                         type="text"
                         name="prep_time"
                         placeholder="Prep Time"
@@ -96,6 +100,7 @@ import styled from "styled-components"
             <span>
                 <p> <span> 
                     <input
+                        size="50"
                         type="text"
                         name="cook_time"
                         placeholder="Cook Time"
@@ -108,19 +113,21 @@ import styled from "styled-components"
             <span>
                 <p> <span>
                     <input
+                        size="50"
                         type="text"
                         name="servings"
                         placeholder="Servings"
                         value={recipe.servings}
                         onChange={handleChanges}
                     />
-                     </span> </p>
+                    </span> </p>
 
             </span>
 
             <span>
                 <p> <span>
                     <input
+                        size="50"
                         className="name"
                         type="text"
                         name="recipe_photo"
@@ -129,55 +136,56 @@ import styled from "styled-components"
                         onChange={handleChanges}
                     />
                     </span> </p>
+            </span>
+            <p>
+                <span>                    
+                    {ingredients.map((Ingredients, idx) => {
+                        return (
+                        <div key={`${Ingredients}-${idx}`}>
+                            <input
+                            size="42"
+                            type="text"
+                            placeholder="Ingredients"
+                            value={Ingredients.value || ""}
+                            onChange={e => handleBtnIng(idx, e)}
+                            />
+                            <span> <button type="button" onClick = {() => handleAddIng()}>+</button> </span> 
+                            <button type="button" onClick={() => handleRemoveIng(idx)}>
+                            X
+                            </button>
+                        </div>
+                        );
+                    })}                
+                </span>
+            </p>
 
+            <span>
+                <span>
+                    {fields.map((field, idx) => {
+                            return (
+                            <div key={`${field}-${idx}`}>
+                                <input
+                                size="42"
+                                type="text"
+                                placeholder="Step"
+                                value={field.value || ""}
+                                onChange={e => handleBtnDir(idx, e)}
+                                />
+                                <span>  <button type="button" onClick = {() => handleAddDir()}>+</button> </span>
+                                <button type="button" onClick={() => handleRemoveDir(idx)}>
+                                X
+                                </button>
+                            </div>
+                            );
+                        })} 
+                </span>                 
             </span>
 
-            <div>
-                <p className="bottom-text">Ingredients <span>  <button type="button" onClick = {() => handleAddIng()}>+</button> </span> </p>
-                
-                {ingredients.map((Ingredients, idx) => {
-                    return (
-                    <div key={`${Ingredients}-${idx}`}>
-                        <input
-                        type="text"
-                        placeholder="Ingredients"
-                        value={Ingredients.value || ""}
-                        onChange={e => handleBtnIng(idx, e)}
-                        />
-                        <button type="button" onClick={() => handleRemoveIng(idx)}>
-                        X
-                        </button>
-                    </div>
-                    );
-                })}
-               
-            </div>
-
-            <div>
-                <p className="bottom-text">Directions <span>  <button type="button" onClick = {() => handleAddDir()}>+</button> </span> </p>
-                
-                {fields.map((field, idx) => {
-                    return (
-                    <div key={`${field}-${idx}`}>
-                        <input
-                        type="text"
-                        placeholder="Step"
-                        value={field.value || ""}
-                        onChange={e => handleBtnDir(idx, e)}
-                        />
-                        <button type="button" onClick={() => handleRemoveDir(idx)}>
-                        X
-                        </button>
-                    </div>
-                    );
-                })}
-               
-            </div>
             <span>
                 <p> <span> 
                     <textarea
                         rows="10"
-                        cols="50"
+                        cols="52"
                         className="name"
                         type="text"
                         name="recipe_history"
@@ -186,12 +194,11 @@ import styled from "styled-components"
                         onChange={handleChanges}
                     />
                     </span></p>
-
             </span>
-
             <button className="addButton" type="submit">Post Recipe</button>
-        </form>
-
+            </form>
+        </>
+       
     )
 }
 
