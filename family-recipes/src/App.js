@@ -6,12 +6,11 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-        <p>
-          Home page
-        </p>
         <Route exact path="/"></Route>
         <Route path="/profile" component={Profile}></Route>
-        <Link to="/profile">Profile</Link>
+        <div className="profile">
+          <Link to="/profile"><button>Profile</button></Link>
+        </div>
     </div>
   );
 }

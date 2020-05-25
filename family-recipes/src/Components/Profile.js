@@ -1,11 +1,16 @@
 import React from "react";
 import SearchBar from "./SearchBar";
+import './Profile.css';
 
 function Profile() {
     return (
         <div>
-            <h1>Hello, Username</h1>
-            <SearchBar />
+            <div className="navBar">Nav Bar Here</div>
+            <h1>HELLO, USERNAME</h1>
+            <div className="border"> </div>
+            <div className="searchBar">
+                <SearchBar />
+            </div>
         </div>
     )
 }
