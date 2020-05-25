@@ -13,12 +13,15 @@ function SearchBar() {
     // ^this will display the list depending on what's typed in the search bar
 
     // const handleChange = e => {let oldList = recipes.map(meal => { return {recipe: meal.recipes.toLowerCase()};}); 
+    // ^this will run anytime there's a change in the input field
 
     // if (e !== "") { let newList = [];
     // setWord(e); newList = oldList.filter(meal => meal.recipes.includes(word.toLowerCase()));
+    // ^if the input bar is not empty, run the following
 
     // setFilterDisplay(newList);
     // } else { setFilterDisplay(recipes);}};}
+    // ^else, setFilterDisplay to the original recipe list
 
 
     return (
