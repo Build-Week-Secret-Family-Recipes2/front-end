@@ -8,6 +8,7 @@ function Profile() {
             <div className="navBar">Nav Bar Here</div>
             <h1>HELLO, USERNAME</h1>
             <div className="border"> </div>
+            <h2>YOUR RECIPES</h2>
             <div className="searchBar">
                 <SearchBar />
             </div>
