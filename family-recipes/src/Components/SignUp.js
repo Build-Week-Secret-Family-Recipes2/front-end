@@ -73,6 +73,11 @@ const formSchema = yup.object().shape({
 export default function SignUp() {
   const classes = useStyles();
 
+  let history = useHistory();
+
+    const orderNewPage = () => {
+        return history.push("/profile")
+
   return (
     
     <Container component="main" maxWidth="xs">
