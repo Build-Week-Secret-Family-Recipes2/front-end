@@ -19,7 +19,8 @@
     "react-scripts": "3.4.1",
     "react-styled-select": "^3.0.0",
     "reactstrap": "^8.4.1",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "yup": "^0.29.0"
   },
   "scripts": {
     "start": "react-scripts start",
