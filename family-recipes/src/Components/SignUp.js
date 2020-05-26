@@ -94,7 +94,7 @@ export default function SignUp() {
     })
 
     axios
-    .post("https://reqres.in/api/users", formState)
+    .post("https://bw-grandmas-recipes.herokuapp.com/api/auth/register", formState)
     .then(response => {console.log("Response received.", response);})
     .catch(err => console.log(err));
     orderNewPage()
