@@ -8,6 +8,7 @@ import './App.css';
 // import AddRecipe from './Components/AddRecipe';
 // import Home from './Components/Home';
 import NavBar from './Components/NavBar';
+import axios from "axios";
 
 function App() {
   return (

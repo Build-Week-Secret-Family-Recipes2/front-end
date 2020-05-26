@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,20 +12,36 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios';
+
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      {/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{' '} */}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('Did submit')
+
+    axios.post(`https://bw-grandmas-recipes.herokuapp.com/api/auth/register`)
+    .then(res=> {
+      console.log(res);
+      console.log('SENT TO BACK END');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  };
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -58,31 +74,21 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
-                name="User Name"
+                name="userName"
                 variant="outlined"
                 required
                 fullWidth
-                id="User Name"
-                label="User Name"
+                id="userName"
+                label="userName"
                 autoFocus
               />
             </Grid>
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid> */}
+ 
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -114,10 +120,11 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-          >
+            >
+          
             Sign Up
           </Button>
-          <Grid container justify="flex-center">
+          <Grid container justify="center">
             <Grid item>
               <Link href="/Login" variant="body2">
                 Already have an account? Login

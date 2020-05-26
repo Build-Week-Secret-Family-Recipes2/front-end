@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axiosWithAuth from '../utils/AxiosWithAuth';
 
 function Copyright() {
   return (
@@ -25,6 +26,7 @@ function Copyright() {
     </Typography>
   );
 }
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,7 +49,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function LogIn() {
+    const initialState = {
+      credentials: {
+        username: '',
+        password: ''
+      }
+    }
+    console.log('Log in page');
+    const [loginData, setLoginData] = useState(initialState);
+  
+    const handleChange = e => {
+      setLoginData({
+        credentials: {
+          ...loginData.credentials,
+          [e.target.name]: e.target.value
+          
+        }
+      })
+    }
+  
+  const login = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post('/login', loginData.credentials)
+      .then(res => {
+        localStorage.setItem('token', res.data.payload);
+        
+      })
+      .catch(err => console.log(err));
+    }
+
   const classes = useStyles();
+  
 
   return (
 
@@ -58,7 +91,7 @@ export default function LogIn() {
         <Typography component="h1" variant="h5">
           Login Please
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={login}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -81,13 +114,7 @@ export default function LogIn() {
             id="password"
             autoComplete="current-password"
           />
-            <Grid container justify="flex-center">
-                <Grid item>
-                    <Link href="/SignUp" variant="body2">
-                        Need an account? Sign up
-                    </Link>
-                </Grid>
-            </Grid>
+
           <Button
             type="submit"
             fullWidth
@@ -97,6 +124,13 @@ export default function LogIn() {
           >
             Sign In
           </Button>
+          <Grid container justify="flex-center">
+                <Grid item>
+                    <Link href="/SignUp" variant="body2">
+                        Need an account? Sign up
+                    </Link>
+                </Grid>
+            </Grid>
         </form>
       </div>
       <Box mt={8}>

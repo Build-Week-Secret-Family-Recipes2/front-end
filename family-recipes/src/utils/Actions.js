@@ -10,7 +10,7 @@ export const DELETE_LOGIN = 'DELETE_LOGIN';
 export const login = credentials => dispatch => {
     dispatch({ type: LOGIN_START });
         return AxiosWithAuth() 
-            .post('/login', credentials)
+            .post('/api/auth/login', credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.payload);
                 dispatch({ type: LOGIN_SUCCESS })
