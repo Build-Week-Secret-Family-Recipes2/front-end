@@ -164,7 +164,13 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  value={formState.firstName}
+                  onChange={inputChange}
                 />
+                {errorState.firstName.length > 0 ? (
+                    <p className="error">
+                    {errorState.firstName}
+                </p> ): null}
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -175,7 +181,13 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="lname"
+                  value={formState.lastName}
+                  onChange={inputChange}
                 />
+                {errorState.lastName.length > 0 ? (
+                    <p className="error">
+                    {errorState.lastName}
+                </p> ): null}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -186,7 +198,13 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={formState.email}
+                  onChange={inputChange}
                 />
+                {errorState.email.length > 0 ? (
+                    <p className="error">
+                    {errorState.email}
+                </p> ): null}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -198,13 +216,25 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  value={formState.password}
+                  onChange={inputChange}
                 />
+                {errorState.password.length > 0 ? (
+                    <p className="error">
+                    {errorState.password}
+                </p> ): null}
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
                   label="I want to receive inspiration, marketing promotions and updates via email."
+                  checked={formState.allowExtraEmails}
+                  value={formState.allowExtraEmails}
+                  onChange={inputChange}
                 />
+                <p className="error">
+                    {errorState.allowExtraEmails}
+                </p>
               </Grid>
             </Grid>
             <Button
