@@ -66,3 +66,76 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+
+
+☝️ Proposal
+
+What problem does your app solve?
+Create a space to save memories of classic recipe cards and their details. 
+Easy to access recipes when needed 
+A search filter
+Be as specific as possible; how does your app solve the problem?
+Create an easy to use solution for finding and organizing recipes 
+What is the mission statement?
+Grandmas cookies always tasted the best so now you dont have to lose the recipe. 
+💡 Features
+
+What features are required for your minimum viable product?
+Log in
+Sign up 
+New/Add Recipe 
+Edit Recipe
+View all Recipes ( user dashboard )
+Search function 
+Marketing page
+Upload pic
+A firm maybe mobile upload of a pic. 
+What features may you wish to put in a future release?
+Mobile access 
+Sharing recipes with other users
+Shopping list 
+Paid membership 
+Family profiles ( with individual profiles able to share to family profile)
+Calendar integration to save recipes to a calendar 
+What do the top 3 similar apps do for their users?
+🛠 Frameworks - Libraries
+
+What 3rd party frameworks/libraries are you considering using?
+Express
+Node.js
+Material UI 
+Formik
+Reactstrap 
+Redux
+Thunk 
+Styled components
+Axios
+
+
+Do the APIs you need require you to contact them to gain access?
+
+
+Are you required to pay to use said API(s)?
+🧮 For Data Scientists
+
+Describe the established data source with at least rough data able to be provided on day one.
+Write a description for what the data science problem is. What uncertainty or prediction are you trying to discover? How could this data be used to find a solution to this problem?
+What kind of target output can you deliver to the Web/UX/iOS teams to work with? Is it in JSON format or something else?
+🎯 Target Audience
+
+Who is your target audience? Be specific.
+Humans who eat
+What feedback have you gotten from potential users?
+Positive and full of excitement
+Have you validated this problem and your solution with a target audience? Describe how,
+
+🔑 Prototype Key Feature(s)
+
+How long do you think it will take to implement these features?
+Key features are to be implemented by the end of the build
+Do you anticipate working on stretch functionality after completion of a Minimal Viable Product?	
+Yes, In an ideal situation we would like to accomplish a few stretch goals. 
+

@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 import "./SignUp.css"
 
@@ -22,15 +25,28 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      {/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{' '}
+      </Link>{' '} */}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log('Did submit')
+
+    axios.post(`https://bw-grandmas-recipes.herokuapp.com/api/auth/register`)
+    .then(res=> {
+      console.log(res);
+      console.log('SENT TO BACK END');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  };
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(2),
@@ -257,7 +273,6 @@ export default function SignUp() {
                 </Link>
               </Grid>
             </Grid>
-          </form>
         </div>
         <Box mt={5}>
           <Copyright />
