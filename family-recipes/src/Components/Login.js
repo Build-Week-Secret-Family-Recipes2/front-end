@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,19 +12,21 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axiosWithAuth from '../utils/AxiosWithAuth';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Family Recipes
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -46,22 +48,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function LogIn() {
+    const initialState = {
+      credentials: {
+        username: '',
+        password: ''
+      }
+    }
+    console.log('Log in page');
+    const [loginData, setLoginData] = useState(initialState);
+  
+    const handleChange = e => {
+      setLoginData({
+        credentials: {
+          ...loginData.credentials,
+          [e.target.name]: e.target.value
+          
+        }
+      })
+    }
+  
+  const login = e => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post('/login', loginData.credentials)
+      .then(res => {
+        localStorage.setItem('token', res.data.payload);
+        
+      })
+      .catch(err => console.log(err));
+    }
+
   const classes = useStyles();
+  
 
   return (
 
     <Container component="main" maxWidth="xs">
-          <h1>Sign in Page</h1>
+          
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Login Please
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={login}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -84,10 +114,7 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+
           <Button
             type="submit"
             fullWidth
@@ -97,18 +124,13 @@ export default function SignIn() {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
+          <Grid container justify="flex-center">
+                <Grid item>
+                    <Link href="/SignUp" variant="body2">
+                        Need an account? Sign up
+                    </Link>
+                </Grid>
             </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={8}>
