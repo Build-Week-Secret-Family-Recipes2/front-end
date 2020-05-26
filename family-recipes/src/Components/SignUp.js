@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,6 +16,8 @@ import Container from '@material-ui/core/Container';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 
+import "./SignUp.css"
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -30,13 +33,14 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   avatar: {
     margin: theme.spacing(1),
+    // marginRight: "35%",
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
@@ -90,7 +94,7 @@ export default function SignUp() {
     })
 
     axios
-    // .post("add post api here", formState)
+    .post("https://reqres.in/api/users", formState)
     .then(response => {console.log("Response received.", response);})
     .catch(err => console.log(err));
     orderNewPage()
@@ -115,11 +119,11 @@ export default function SignUp() {
   const inputChange = (e) => {
     e.persist()
     validate(e);
-            let value =
-                e.target.name === "allowExtraEmails" ?
-                e.target.checked : 
-                e.target.value;
-            setFormState({ ...formState, [e.target.name]: e.target.value});
+      let value =
+          e.target.name === "allowExtraEmails" ?
+          e.target.checked : 
+          e.target.value;
+      setFormState({ ...formState, [e.target.name]: e.target.value});
   }
 
   const validate = (e) => {
@@ -143,13 +147,13 @@ export default function SignUp() {
   return (
     <form onSubmit={formSubmit}>
       <Container component="main" maxWidth="xs">
-        <h1>Sign UP page</h1>
+        {/* <h1>Sign UP page</h1> */}
         <CssBaseline />
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography className="signUp" component="h1" variant="h5">
             Sign up
           </Typography>
           <form className={classes.form} noValidate>
@@ -227,7 +231,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label="I want to receive inspiration, marketing promotions, and updates via email."
                   checked={formState.allowExtraEmails}
                   value={formState.allowExtraEmails}
                   onChange={inputChange}
@@ -246,9 +250,9 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-            <Grid container justify="flex-end">
+            <Grid container justify="center">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="#" className="alreadyHaveAccount" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
