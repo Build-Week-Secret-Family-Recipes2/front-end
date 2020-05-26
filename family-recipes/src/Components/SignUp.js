@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import * as yup from 'yup';
+import { useHistory } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -45,6 +47,28 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
+const formSchema = yup.object().shape({
+  firstName: yup
+      .string()
+      .min(2)
+      .required("Must provide your first name"),
+  lastName: yup
+      .string()
+      .min(2)
+      .required("Must provide your last name"),
+  email: yup
+      .string()
+      .email("Must provide a valid email address: name@email.com")
+      .required("Must include email address"),
+  password: yup
+      .string()
+      .min(8)
+      .required("Must include a password at least 8 characters"),
+  allowExtraEmails: yup
+      .bool()
+      .oneOf([true], ""),
+});
 
 export default function SignUp() {
   const classes = useStyles();
