@@ -1,7 +1,4 @@
 import React from 'react';
-import Profile from './Components/Profile'
-import { Route, Link } from "react-router-dom";
-import SignUp from "./Components/SignUp";
 import './App.css';
 // import { Route, Switch, NavLink } from "react-router-dom";
 // import Login from "./Components/Login";
@@ -11,12 +8,10 @@ import './App.css';
 // import AddRecipe from './Components/AddRecipe';
 // import Home from './Components/Home';
 import NavBar from './Components/NavBar';
-import axios from "axios";
 
 function App() {
   return (
     <div className="App">
-
       <NavBar />
 
       {/* <> 
@@ -33,6 +28,7 @@ function App() {
           </Switch>
         </Nav>
       </> */}
+
     </div>
   );
 }
