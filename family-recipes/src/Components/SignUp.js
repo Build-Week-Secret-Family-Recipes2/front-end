@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,7 +16,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 
 import "./SignUp.css"
 
@@ -25,9 +23,9 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      {/* <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{' '} */}
+      </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -179,13 +177,13 @@ export default function SignUp() {
                   autoComplete="fname"
                   name="firstName"
                   variant="outlined"
-                  required
                   fullWidth
                   id="firstName"
                   label="First Name"
                   autoFocus
                   value={formState.firstName}
                   onChange={inputChange}
+                  required
                 />
                 {errorState.firstName.length > 0 ? (
                     <p className="error">
@@ -195,7 +193,6 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   variant="outlined"
-                  required
                   fullWidth
                   id="lastName"
                   label="Last Name"
@@ -203,6 +200,7 @@ export default function SignUp() {
                   autoComplete="lname"
                   value={formState.lastName}
                   onChange={inputChange}
+                  required
                 />
                 {errorState.lastName.length > 0 ? (
                     <p className="error">
@@ -212,7 +210,6 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
-                  required
                   fullWidth
                   id="email"
                   label="Email Address"
@@ -220,6 +217,7 @@ export default function SignUp() {
                   autoComplete="email"
                   value={formState.email}
                   onChange={inputChange}
+                  required
                 />
                 {errorState.email.length > 0 ? (
                     <p className="error">
@@ -229,7 +227,6 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
-                  required
                   fullWidth
                   name="password"
                   label="Password"
@@ -238,6 +235,7 @@ export default function SignUp() {
                   autoComplete="current-password"
                   value={formState.password}
                   onChange={inputChange}
+                  required
                 />
                 {errorState.password.length > 0 ? (
                     <p className="error">
@@ -273,6 +271,7 @@ export default function SignUp() {
                 </Link>
               </Grid>
             </Grid>
+          </form> 
         </div>
         <Box mt={5}>
           <Copyright />
