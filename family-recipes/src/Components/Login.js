@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axiosWithAuth from '../utils/AxiosWithAuth';
+import { useHistory } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -47,13 +48,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function LogIn() {
     const initialState = {
       credentials: {
         username: '',
         password: ''
       }
+
     }
+    let history = useHistory();
+    const orderNewPage = () => {
+      return history.push("/profile")
+    }
+
     console.log('Log in page');
     const [loginData, setLoginData] = useState(initialState);
   
@@ -76,6 +84,7 @@ export default function LogIn() {
         
       })
       .catch(err => console.log(err));
+      orderNewPage()
     }
 
   const classes = useStyles();
