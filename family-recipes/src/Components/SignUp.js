@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,7 +17,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 
 import "./SignUp.css"
 
@@ -273,6 +273,7 @@ export default function SignUp() {
                 </Link>
               </Grid>
             </Grid>
+          </form>
         </div>
         <Box mt={5}>
           <Copyright />
