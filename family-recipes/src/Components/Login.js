@@ -70,7 +70,7 @@ export default function LogIn() {
   const login = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post('/login', loginData.credentials)
+      .post('/auth/login', loginData.credentials)
       .then(res => {
         localStorage.setItem('token', res.data.payload);
         

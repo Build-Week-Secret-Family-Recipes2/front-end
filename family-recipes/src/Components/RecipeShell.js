@@ -24,7 +24,7 @@ export default function RecipeShell() {
 
     useEffect(() => {
         axios
-            .get(`https://bw-grandmas-recipes.herokuapp.com/`)
+            .get(`https://bw-grandmas-recipes.herokuapp.com/api/recipes`)
             .then(res => {
                 SetRecipes(res.data);
                 console.log(res.data);

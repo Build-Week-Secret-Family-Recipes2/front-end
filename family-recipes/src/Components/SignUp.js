@@ -108,11 +108,11 @@ export default function SignUp() {
     password: "",
     allowExtraEmails: false   
     })
-
+console.log("Sign up form submit",formSubmit)
     axios
     .post("https://bw-grandmas-recipes.herokuapp.com/api/auth/register", formState)
     .then(response => {console.log("Response received.", response);})
-    .catch(err => console.log(err));
+    .catch(err => console.log("This is the sign up error", err));
     orderNewPage()
   };
 
