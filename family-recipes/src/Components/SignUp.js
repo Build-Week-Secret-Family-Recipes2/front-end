@@ -20,14 +20,11 @@ import "./SignUp.css"
 
 
 const formSchema = yup.object().shape({
-  firstName: yup
+  userName: yup
       .string()
       .min(2)
       .required("Must provide your first name"),
-  lastName: yup
-      .string()
-      .min(2)
-      .required("Must provide your last name"),
+
   email: yup
       .string()
       .email("Must provide a valid email address: name@email.com")
@@ -106,8 +103,7 @@ export default function SignUp() {
   const formSubmit = (e) => {
     e.preventDefault();
     setFormState({
-    firstName: "",
-    lastName: "",
+    userName: "",
     email: "",
     password: "",
     allowExtraEmails: false   
@@ -122,16 +118,14 @@ export default function SignUp() {
 
 
   const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
+    userName: "",
     email: "",
     password: "",
     allowExtraEmails: false      
   });
 
   const [errorState, setErrorState] = useState({
-    firstName: "",
-    lastName: "",
+    userName: "",
     email: "",
     password: ""
   });
@@ -186,13 +180,13 @@ export default function SignUp() {
                 id="userName"
                 label="userName"
                 autoFocus
-                value={formState.firstName}
+                value={formState.userName}
                 onChange={inputChange}
                 required
               />
-              {errorState.firstName.length > 0 ? (
+              {errorState.userName.length > 0 ? (
                   <p className="error">
-                  {errorState.firstName}
+                  {errorState.userName}
               </p> ): null}
             
 
