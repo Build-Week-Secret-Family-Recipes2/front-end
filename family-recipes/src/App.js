@@ -1,17 +1,17 @@
 import React from 'react';
 import './App.css';
-// import { Route, Switch, NavLink } from "react-router-dom";
-// import Login from "./Components/Login";
-// import SignUp from "./Components/SignUp";
-// import PrivateRoute from "./utils/PrivateRoute";
-// import { Nav } from "reactstrap";
-// import AddRecipe from './Components/AddRecipe';
-// import Home from './Components/Home';
+import { Switch, NavLink } from "react-router-dom";
+import Login from "./Components/Login";
+import PrivateRoute from "./utils/PrivateRoute";
+import { Nav } from "reactstrap";
+import AddRecipe from './Components/AddRecipe';
+import Home from './Components/Home';
 import NavBar from './Components/NavBar';
 
 function App() {
   return (
     <div className="App">
+
       <NavBar />
 
       {/* <> 
@@ -25,10 +25,10 @@ function App() {
             <Route path = "/SignUp" component = {SignUp} />
             <Route path = "/AddRecipe" component = {AddRecipe} /> 
             <Route path = "/" component = {Home} /> 
+            <Route path = "/Profile" component = {Profile} />
           </Switch>
         </Nav>
       </> */}
-
     </div>
   );
 }
