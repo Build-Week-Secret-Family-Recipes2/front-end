@@ -26,7 +26,6 @@ function SearchBar() {
 
     return (
         <div>
-            <h2>Search Your Recipes</h2>
             {/* <input onChange={e => handleChange(e.target.value)} />
             {filterDisplay.map(recipes, i) => (
                 <div key={i}>
