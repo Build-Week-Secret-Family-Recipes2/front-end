@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axiosWithAuth from '../utils/AxiosWithAuth';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 function Copyright() {
@@ -48,20 +49,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function LogIn() {
     const initialState = {
       credentials: {
         username: '',
         password: ''
       }
-
     }
-    let history = useHistory();
-    const orderNewPage = () => {
-      return history.push("/profile")
-    }
-
     console.log('Log in page');
     const [loginData, setLoginData] = useState(initialState);
   
@@ -74,7 +68,11 @@ export default function LogIn() {
         }
       })
     }
-  
+    let history = useHistory();
+    const orderNewPage = () => {
+      return history.push("/AddRecipe")
+  }
+
   const login = e => {
     e.preventDefault();
     axiosWithAuth()
@@ -86,6 +84,15 @@ export default function LogIn() {
       .catch(err => console.log(err));
       orderNewPage()
     }
+
+//   axios 
+//     .post("https://bw-grandmas-recipes.herokuapp.com/api/auth/login", loginData.credentials)
+//     .then(res => {
+//           localStorage.setItem('token', res.data.payload);
+          
+//         })
+//     .catch(err => console.log(err));
+// }
 
   const classes = useStyles();
   
@@ -110,6 +117,7 @@ export default function LogIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleChange}
           />
           <TextField
             variant="outlined"
@@ -121,6 +129,7 @@ export default function LogIn() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleChange}
           />
 
           <Button

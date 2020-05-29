@@ -20,30 +20,24 @@ import "./SignUp.css"
 
 
 const formSchema = yup.object().shape({
-  userName: yup
+  username: yup
       .string()
-      .min(2)
-      .required("Must provide your first name"),
+      .min(2, "Must provide your first name")
+      .required(),
 
   email: yup
       .string()
       .email("Must provide a valid email address: name@email.com")
-      .required("Must include email address"),
+      .required(),
+
   password: yup
       .string()
-      .min(8)
-      .required("Must include a password at least 8 characters"),
-  allowExtraEmails: yup
-      .bool()
-      .oneOf([true], ""),
+      .min(8, "Must include a password at least 8 characters")
+      .required()
+  // : yup
+  //     .bool()
+  //     .oneOf([true], ""),
 });
-
-
-
-
-
-
-
 
 function Copyright() {
   return (
@@ -103,29 +97,26 @@ export default function SignUp() {
   const formSubmit = (e) => {
     e.preventDefault();
     setFormState({
-    userName: "",
+    username: "",
     email: "",
-    password: "",
-    allowExtraEmails: false   
-    })
-console.log("Sign up form submit",formSubmit)
+    password: "",})
+
     axios
-    .post("https://bw-grandmas-recipes.herokuapp.com/api/auth/register", formState)
-    .then(response => {console.log("Response received.", response);})
-    .catch(err => console.log("This is the sign up error", err));
-    orderNewPage()
-  };
+      .post("https://bw-grandmas-recipes.herokuapp.com/api/auth/register", formState)
+      .then(response => {console.log("Response received.", response);})
+      .catch(err => console.log(err));
+      orderNewPage()
+    };
 
 
   const [formState, setFormState] = useState({
-    userName: "",
+    username: "",
     email: "",
-    password: "",
-    allowExtraEmails: false      
+    password: "",      
   });
 
   const [errorState, setErrorState] = useState({
-    userName: "",
+    username: "",
     email: "",
     password: ""
   });
@@ -134,9 +125,8 @@ console.log("Sign up form submit",formSubmit)
     e.persist()
     validate(e);
       let value =
-          e.target.name === "allowExtraEmails" ?
-          e.target.checked : 
-          e.target.value;
+          e.target.name ===  e.target.value;
+          // e.target.checked : 
       setFormState({ ...formState, [e.target.name]: e.target.value});
   }
 
@@ -168,25 +158,25 @@ console.log("Sign up form submit",formSubmit)
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate onSubmit={formSubmit}>
+        <form className={classes.form} onSubmit={formSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="userName"
-                name="userName"
+                autoComplete="username"
+                name="username"
                 variant="outlined"
                 required
                 fullWidth
-                id="userName"
-                label="userName"
+                id="username"
+                label="username"
                 autoFocus
-                value={formState.userName}
+                value={formState.username}
                 onChange={inputChange}
                 required
               />
-              {errorState.userName.length > 0 ? (
+              {errorState.username.length > 0 ? (
                   <p className="error">
-                  {errorState.userName}
+                  {errorState.username}
               </p> ): null}
             
 
