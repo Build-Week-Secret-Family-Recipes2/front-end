@@ -69,9 +69,16 @@ export default function LogIn() {
       })
     }
     let history = useHistory();
+
     const orderNewPage = () => {
+      const reloadPage = () => {
+        return window.location.reload()
+      }
       return history.push("/AddRecipe")
+
+      reloadPage()
   }
+
 
   const login = e => {
     e.preventDefault();
@@ -83,6 +90,7 @@ export default function LogIn() {
       })
       .catch(err => console.log(err));
       orderNewPage()
+      
     }
 
 //   axios 
