@@ -20,7 +20,7 @@ import "./SignUp.css"
 
 
 const formSchema = yup.object().shape({
-  userName: yup
+  username: yup
       .string()
       .min(2, "Must provide a username, minimum of 2 characters")
       .required(),
@@ -97,7 +97,7 @@ export default function SignUp() {
   const formSubmit = (e) => {
     e.preventDefault();
     setFormState({
-    userName: "",
+    username: "",
     email: "",
     password: "",})
 
@@ -110,13 +110,13 @@ export default function SignUp() {
 
 
   const [formState, setFormState] = useState({
-    userName: "",
+    username: "",
     email: "",
     password: ""     
   });
 
   const [errorState, setErrorState] = useState({
-    userName: "",
+    username: "",
     email: "",
     password: ""
   });
@@ -125,9 +125,10 @@ export default function SignUp() {
     e.persist()
     validate(e);
       let value =
-        e.target.type === "name" ?
-        e.target.name : 
-        e.target.value;
+        // e.target.type === "name" ?
+        // e.target.name : 
+        // e.target.value;
+        e.target.name ===  e.target.value;
       setFormState({ ...formState, [e.target.name]: e.target.value});
   }
 
@@ -163,22 +164,22 @@ export default function SignUp() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="userName"
-                name="userName"
+                autoComplete="username"
+                name="username"
                 variant="outlined"
                 required
                 fullWidth
-                id="userName"
+                id="username"
                 label="Username"
                 autoFocus
-                value={formState.userName}
+                value={formState.username}
                 onChange={inputChange}
                 type="text"
                 required
               />
-              {errorState.userName.length > 0 ? (
+              {errorState.username.length > 0 ? (
                   <p className="error">
-                  {errorState.userName}
+                  {errorState.username}
               </p> ): null}
             
 
