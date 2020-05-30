@@ -5,3 +5,17 @@
 .App {
   color: gray;
 }
+.navBar {
+  display: flex;
+  justify-content: space-evenly;
+  width: 27vw;
+  background-color: rgb(47, 45, 54);
+  color: white;
+  padding: 2%;
+}
+
+.navContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

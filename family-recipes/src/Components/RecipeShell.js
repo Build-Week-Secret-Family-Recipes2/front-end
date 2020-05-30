@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import styled from 'styled-components';
-import RecipeCard from './recipeCard'
+import RecipeCard from './RecipeCard'
 
 const CardWrapper = styled.div`
     display: flex;
@@ -24,7 +24,7 @@ export default function RecipeShell() {
 
     useEffect(() => {
         axios
-            .get(`https://bw-grandmas-recipes.herokuapp.com/api/recipes`)
+            .get(`https://backend-chef.herokuapp.com/api/recipes/`)
             .then(res => {
                 SetRecipes(res.data);
                 console.log(res.data);
@@ -39,7 +39,7 @@ export default function RecipeShell() {
         <section >
             <Header>Recipes</Header>
             
-            <HomeSearch/>
+   
             <CardWrapper className="Recipe-Day" >
                 
                     {recipes.map(recipes => (

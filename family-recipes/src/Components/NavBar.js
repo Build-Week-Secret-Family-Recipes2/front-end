@@ -7,6 +7,7 @@ import PrivateRoute from "../utils/PrivateRoute";
 import { Nav } from "reactstrap";
 import AddRecipe from './AddRecipe';
 import Home from './Home';
+import Profile from './Profile';
 
 
 const PrivateNav = () => {
@@ -27,14 +28,16 @@ const PrivateNav = () => {
     if (loggedIn === true){
       return (
 
-        <nav>
-            <NavLink className="privatelink" to="/Profile">Profile</NavLink>
-            <NavLink className="privatelink" to="/AddRecipe">Add Recipe</NavLink>
-            <NavLink className="privatelink" to="/login" onClick={() => {
+        <nav className = "navContainer">
+          
+            <NavLink className="navBar" to="/Profile">Profile</NavLink>
+            <NavLink className="navBar" to="/AddRecipe">Add Recipe</NavLink>
+            <NavLink className="navBar" to="/login" onClick={() => {
               signOut();
             }} >Sign Out</NavLink>
-            {/* <Route path = '/Profile' component = {Profile} /> */}
-            <Route path = '/AddRecipe' component = {AddRecipe} />
+            <PrivateRoute path = '/Profile' component = {Profile} />
+            <PrivateRoute path = '/AddRecipe' component = {AddRecipe} />         
+            
 
         </nav>
 
@@ -42,15 +45,14 @@ const PrivateNav = () => {
     } else {
       return (
         <> 
-        <Nav>
-          <NavLink to ='/'>Home </NavLink>
-          <NavLink to ='/Login'>Login  </NavLink>
-          <NavLink to ='/SignUp'>Sign Up </NavLink>
+        <Nav className = "navContainer">
+          <NavLink className="navBar" to ='/'>Home </NavLink>
+          <NavLink className="navBar" to ='/Login'>Login  </NavLink>
+          <NavLink className="navBar" to ='/SignUp'>Sign Up </NavLink>
           
           <Switch>
             <Route path = "/Login" component = {Login} />
             <Route path = "/SignUp" component = {SignUp} />
-            <Route path = "/AddRecipe" component = {AddRecipe} /> 
             <Route path = "/" component = {Home} /> 
           </Switch>
         </Nav>
@@ -71,9 +73,9 @@ const PrivateNav = () => {
     //       <NavLink to ='/Login'>Login  </NavLink>
     //       <NavLink to ='/SignUp'>Sign Up </NavLink>
           
-    //       <NavLink className="privatelink" to="/Profile">Profile </NavLink>
-    //       <NavLink className="privatelink" to="/AddRecipe">Add Recipe </NavLink>
-    //       <NavLink className="privatelink" to="/login" onClick={() => {
+    //       <NavLink className="navBar" to="/Profile">Profile </NavLink>
+    //       <NavLink className="navBar" to="/AddRecipe">Add Recipe </NavLink>
+    //       <NavLink className="navBar" to="/login" onClick={() => {
     //           signOut();
     //         }} >Sign Out</NavLink>
     //       <Switch>

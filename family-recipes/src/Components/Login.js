@@ -13,8 +13,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axiosWithAuth from '../utils/AxiosWithAuth';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+// import axios from 'axios';
+import { useHistory, Redirect } from 'react-router-dom';
+import PrivateRoute from "../utils/PrivateRoute";
+import AddRecipe from './AddRecipe';
 
 function Copyright() {
   return (
@@ -55,7 +57,24 @@ export default function LogIn() {
         username: '',
         password: ''
       }
+    
+    
+    
     }
+    function refreshPage() {
+      window.location.reload(false);
+    }
+
+    let history = useHistory();
+    const orderNewPage = () => {
+      return ( 
+        history.push("/Profile")          
+
+          
+       )
+        console.log("orderNewPage did something");
+  }
+
     console.log('Log in page');
     const [loginData, setLoginData] = useState(initialState);
   
@@ -68,28 +87,17 @@ export default function LogIn() {
         }
       })
     }
-    let history = useHistory();
-
-    const orderNewPage = () => {
-      const reloadPage = () => {
-        return window.location.reload()
-      }
-      return history.push("/AddRecipe")
-
-      reloadPage()
-  }
-
-
+  
   const login = e => {
     e.preventDefault();
     axiosWithAuth()
       .post('/auth/login', loginData.credentials)
       .then(res => {
         localStorage.setItem('token', res.data.payload);
-        
+        orderNewPage() 
       })
       .catch(err => console.log(err));
-      orderNewPage()
+
       
     }
 
@@ -107,7 +115,7 @@ export default function LogIn() {
 
   return (
 
-    <Container component="main" maxWidth="xs">
+    <Container component="navBar" maxWidth="xs">
           
       <CssBaseline />
       <div className={classes.paper}>
@@ -146,6 +154,7 @@ export default function LogIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            
           >
             Sign In
           </Button>
@@ -156,6 +165,7 @@ export default function LogIn() {
                     </Link>
                 </Grid>
             </Grid>
+            <div onSubmit = {refreshPage}></div>
         </form>
       </div>
       <Box mt={8}>

@@ -9,10 +9,19 @@ import Home from './Components/Home';
 import NavBar from './Components/NavBar';
 
 function App() {
+
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   return (
     <div className="App">
 
       <NavBar />
+    <div onLoad = {refreshPage}>
+
+    </div>
+      
 
       {/* <> 
         <Nav>
@@ -30,7 +39,9 @@ function App() {
         </Nav>
       </> */}
     </div>
+    
   );
+  
 }
 
 export default App;
