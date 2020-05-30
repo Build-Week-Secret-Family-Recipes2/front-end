@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import { Switch, NavLink } from "react-router-dom";
-import Login from "./Components/Login";
-import PrivateRoute from "./utils/PrivateRoute";
-import { Nav } from "reactstrap";
-import AddRecipe from './Components/AddRecipe';
-import Home from './Components/Home';
+// import { Switch, NavLink } from "react-router-dom";
+// import Login from "./Components/Login";
+// import PrivateRoute from "./utils/PrivateRoute";
+// import { Nav } from "reactstrap";
+// import AddRecipe from './Components/AddRecipe';
+// import Home from './Components/Home';
 import NavBar from './Components/NavBar';
 
 function App() {
