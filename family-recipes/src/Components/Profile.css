@@ -2,17 +2,22 @@
     color: grey;
     border: 1px solid black;
     padding: 5%;
-    width: 10%;
+    width: 25vw;
+    height: 25vh;
     text-align: center;
+    margin-left: 15%;
 
 }
 
 .h1Profile2 {
     color: grey;
     border: 1px solid black;
+
     padding: 5%;
-    width: 10%;
+    width: 25vw;
+    height: 25vh;
     text-align: center;
+    margin-right: 15%;
 }
 
 .headerAlign {
@@ -41,8 +46,8 @@
     size: 1rem;
 }
 
-.navBar {
+/* .navBar {
     background-color: rgb(47, 45, 54);
     color: white;
     padding: 2%;
-}
+} */

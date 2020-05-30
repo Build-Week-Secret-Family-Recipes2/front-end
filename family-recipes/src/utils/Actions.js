@@ -40,7 +40,7 @@ export const addRecipe = recipe => dispatch => {
   dispatch({ type: ADD_RECIPE_START, payload: recipe });
   console.log(recipe);
   AxiosWithAuth()
-    .post("/recipes/post", recipe)
+    .post("api/recipes", recipe)
     .then(res => {
       dispatch({ type: ADD_RECIPE_SUCCESS });
 

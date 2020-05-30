@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Avatar from '@material-ui/core/Avatar';
+import React, { useState } from 'react';
+// import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+// import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -20,9 +20,9 @@ import "./SignUp.css"
 
 
 const formSchema = yup.object().shape({
-  userName: yup
+  username: yup
       .string()
-      .min(2, "Must provide your first name")
+      .min(2, "Must provide a username, minimum of 2 characters")
       .required(),
 
   email: yup
@@ -91,13 +91,13 @@ export default function SignUp() {
   let history = useHistory();
 
   const orderNewPage = () => {
-    return history.push("/profile")
+    return (history.push("/Login"))
 }
 
   const formSubmit = (e) => {
     e.preventDefault();
     setFormState({
-    userName: "",
+    username: "",
     email: "",
     password: "",})
 
@@ -110,13 +110,13 @@ export default function SignUp() {
 
 
   const [formState, setFormState] = useState({
-    userName: "",
+    username: "",
     email: "",
-    password: "",      
+    password: ""     
   });
 
   const [errorState, setErrorState] = useState({
-    userName: "",
+    username: "",
     email: "",
     password: ""
   });
@@ -125,8 +125,10 @@ export default function SignUp() {
     e.persist()
     validate(e);
       let value =
-          e.target.name ===  e.target.value;
-          // e.target.checked : 
+        // e.target.type === "name" ?
+        // e.target.name : 
+        // e.target.value;
+        e.target.name ===  e.target.value;
       setFormState({ ...formState, [e.target.name]: e.target.value});
   }
 
@@ -150,7 +152,7 @@ export default function SignUp() {
 
 
   return (
-    
+   <form onSubmit={formSubmit}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -158,25 +160,26 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} onSubmit={formSubmit}>
+        {/* <form className={classes.form} onSubmit={formSubmit}> */}
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="userName"
-                name="userName"
+                autoComplete="username"
+                name="username"
                 variant="outlined"
                 required
                 fullWidth
-                id="userName"
+                id="username"
                 label="Username"
                 autoFocus
-                value={formState.userName}
+                value={formState.username}
                 onChange={inputChange}
+                type="text"
                 required
               />
-              {errorState.userName.length > 0 ? (
+              {errorState.username.length > 0 ? (
                   <p className="error">
-                  {errorState.userName}
+                  {errorState.username}
               </p> ): null}
             
 
@@ -192,8 +195,9 @@ export default function SignUp() {
                 name="email"
                 autoComplete="email"
                 value={formState.email}
-                  onChange={inputChange}
-                  required
+                onChange={inputChange}
+                type="email"
+                required
                 />
                 {errorState.email.length > 0 ? (
                     <p className="error">
@@ -238,11 +242,11 @@ export default function SignUp() {
               </Link>
             </Grid>
           </Grid>
-        </form>
       </div>
       <Box mt={5}>
         <Copyright />
       </Box>
     </Container>
+  </form>
   );
 }

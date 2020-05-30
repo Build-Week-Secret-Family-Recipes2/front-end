@@ -11,7 +11,7 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+
 
 
 
@@ -54,21 +54,16 @@ export default function RecipeCard( {recipe_name, recipe_photo, ingredients, coo
   return (
     
     <Card className={classes.card}>
-      <CardHeader
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+      <CardHeader/>
 
-        
-      />
       <CardMedia
         className={classes.media}
         image={recipe_photo}
       />
 
-        title= {recipe_name}
+        <h2>
+          {recipe_name}
+        </h2>
 
       <CardActions disableSpacing>
         
@@ -85,16 +80,22 @@ export default function RecipeCard( {recipe_name, recipe_photo, ingredients, coo
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Ingredients</Typography>
+          <Typography paragraph>Ingredients: </Typography>
           <Typography paragraph>
             {ingredients}
           </Typography>
-          <Typography paragraph>Instructions</Typography>
+          <Typography paragraph>Instructions: </Typography>
           <Typography paragraph>
             {instructions}
           </Typography>
           <Typography paragraph>
-            Cook Time: {cook_time} Prep Time: {prep_time} Servings: {servings}
+            Cook Time: {cook_time}
+          </Typography>
+          <Typography paragraph>
+             Prep Time: {prep_time} 
+          </Typography>
+          <Typography paragraph>
+             Servings: {servings}
           </Typography>
         </CardContent>
       </Collapse>
